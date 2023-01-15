@@ -45,10 +45,13 @@ import useStorage from '@/composables/useStorage'
 import useCollection from '@/composables/useCollection'
 import getUser from '@/composables/getUser'
 import { timestamp } from '@/firebase/config'
+import { useRouter } from 'vue-router';
+
 
 const { url, filePath, uploadImage } = useStorage()
 const { error, addDoc } = useCollection('playlists')
 const { user } = getUser()
+const router = useRouter()
 
 const data = reactive({
     title: '',
@@ -67,7 +70,7 @@ const handleSubmit = async () => {
     if (data.file) {
         data.isLoading = true
         await uploadImage(data.file)
-        await addDoc({
+        const res = await addDoc({
             title: data.title,
             description: data.description,
             userId: user.value.uid,
@@ -83,7 +86,7 @@ const handleSubmit = async () => {
             data.completed = false
         }, 2000)
         if (!error.value) {
-            console.log('playlist added')
+            router.push({ name: 'playlistDetails', params: { id: res.id } })
         }
     }
 }

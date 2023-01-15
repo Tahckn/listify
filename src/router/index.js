@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/auth/LoginView.vue'
 import SignupView from '../views/auth/SignupView.vue'
 import CreatePlaylist from '../views/playlists/CreatePlaylist.vue'
+import PlaylistDetails from '@/views/playlists/PlaylistDetails.vue'
 
 //* route guard
 
@@ -41,6 +42,13 @@ const router = createRouter({
       name: 'createPlaylists',
       component: CreatePlaylist,
       beforeEnter: requireAuth,
+    },
+    {
+      path: '/playlists/:id',
+      name: 'playlistDetails',
+      component: PlaylistDetails,
+      beforeEnter: requireAuth,
+      props: true,
     },
   ],
 })
