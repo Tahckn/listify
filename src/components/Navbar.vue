@@ -5,9 +5,10 @@
                 <RouterLink to="/"><img class="max-h-44  md:-ml-8" src="@/assets/logo.png" alt="logo.png"></RouterLink>
             </h1>
             <div class="space-x-3 mb-3">
+                <router-link class="btn" :to="{ name: 'createPlaylists' }">Create Playlist</router-link>
                 <button v-if="user" @click="handleLogout">Logout</button>
-                <router-link v-if="!user" to="/signup" class="btn">Signup</router-link>
-                <router-link v-if="!user" to="/login" class="btn">Login</router-link>
+                <router-link v-if="!user" :to="{ name: 'signup' }" class="btn">Signup</router-link>
+                <router-link v-if="!user" :to="{ name: 'login' }" class="btn">Login</router-link>
             </div>
         </nav>
     </div>
