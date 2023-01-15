@@ -30,8 +30,7 @@ const data = reactive({
 const handleSubmit = async () => {
   const res = await signup(data.email, data.password, data.displayName)
   setTimeout(() => {
-
-    if (!error) {
+    if (!error.value) {
       router.push({ name: 'home' })
     }
   }, 1000)
