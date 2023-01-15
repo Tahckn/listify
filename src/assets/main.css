@@ -31,7 +31,7 @@ body {
 
 button,
 .btn {
-  @apply drop-shadow-lg mt-2 transition-all duration-75 bg-white/20 bg-opacity-25 text-items rounded-lg border-0 py-2 px-3 font-semibold cursor-pointer inline-block;
+  @apply leading-tight font-light ring-1 ring-[#ffa5ae] ring-opacity-40 drop-shadow-lg mt-2 transition-all duration-75 bg-white/20 bg-opacity-25 text-items rounded-lg border-0 py-2 px-3 cursor-pointer inline-block;
 }
 
 button:hover,

@@ -84,10 +84,10 @@ const handleSubmit = async () => {
         data.completed = true
         setTimeout(() => {
             data.completed = false
-        }, 2000)
-        if (!error.value) {
-            router.push({ name: 'playlistDetails', params: { id: res.id } })
-        }
+            if (!error.value) {
+                router.push({ name: 'playlistDetails', params: { id: res.id } })
+            }
+        }, 1000)
     }
 }
 

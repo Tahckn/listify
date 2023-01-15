@@ -13,9 +13,10 @@
 <script setup>
 import { reactive } from 'vue'
 import useSignup from '@/composables/useSignup'
+import { useRouter } from 'vue-router';
 
 const { error, signup, isLoading } = useSignup()
-
+const router = useRouter()
 const data = reactive({
   email: '',
   password: '',
@@ -28,8 +29,11 @@ const data = reactive({
 
 const handleSubmit = async () => {
   const res = await signup(data.email, data.password, data.displayName)
-  if (!error) {
-    console.log('user signed up')
-  }
+  setTimeout(() => {
+
+    if (!error) {
+      router.push({ name: 'home' })
+    }
+  }, 1000)
 }
 </script>

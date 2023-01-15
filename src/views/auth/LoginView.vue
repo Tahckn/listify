@@ -12,6 +12,9 @@
 <script setup>
 import { reactive } from 'vue'
 import useLogin from '@/composables/useLogin'
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
 
 const { error, login, isLoading } = useLogin()
 
@@ -23,9 +26,12 @@ const data = reactive({
 
 const handleSubmit = async () => {
   const res = await login(data.email, data.password)
-  if (!error.value) {
-    console.log('user logged in')
-  }
+  setTimeout(() => {
+
+    if (!error.value) {
+      router.push({ name: 'home' })
+    }
+  }, 1000)
 }
 
 </script>
