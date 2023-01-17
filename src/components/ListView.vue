@@ -10,7 +10,7 @@
                 </div>
                 <div class="my-0 ml-7">
                     <h3 class="font-semibold tracking-tight">{{ playlist.title }}</h3>
-                    <p class="text-sm font-thin tracking-tight">Created by {{ playlist.userName }}</p>
+                    <p class="text-sm font-thin tracking-normal">Created by {{ playlist.userName }}</p>
                 </div>
                 <div class="ml-auto">
                     <p>{{ playlist.songs.length }}</p>
