@@ -82,3 +82,7 @@ h3 {
 input[type='file']::file-selector-button {
   @apply text-items transition-all duration-75  bg-white/20 leading-6 cursor-pointer rounded-lg border-0 py-1 hover:bg-white/30 hover:-translate-y-[0.3px] hover:scale-[1.02] hover:text-white;
 }
+
+.router-link-active {
+  @apply border-b-2 border-[#ffa5ae];
+}
