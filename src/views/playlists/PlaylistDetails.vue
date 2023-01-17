@@ -9,7 +9,7 @@
             <h2 class="uppercase text-text/90 text-lg md:text-2xl mt-5">{{ playlist.title }}</h2>
             <p class="mb-5 text-text/50 text-xs md:text-sm">Created by {{ playlist.userName }}</p>
             <p class="mb-5 text-text/80 text-sm md:text-base ">{{ playlist.description }}</p>
-            <button v-if="ownership" @click="handleDelete"
+            <button @click="handleDelete"
                 class="bg-transparent text-sm  ring-1 ring-opacity-60 ring-warning hover:bg-warning">Delete
                 Playlist</button>
         </div>
