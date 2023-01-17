@@ -12,7 +12,9 @@
                 <router-link class="text-items border-0 py-2 px-3 cursor-pointer inline-block" :active-class="item"
                     v-if="user" :to="{ name: 'userPlaylists' }">My
                     Playlists</router-link>
-                <span class="font-light inline-block ml-4 pl-4 border-l-[1px]">Hi, {{ user.displayName }}</span>
+                <span v-if="user" class="font-light inline-block ml-4 pl-4 border-l-[1px]">Hi, {{
+                    user.displayName
+                }}</span>
                 <button v-if="user" @click="handleLogout">Logout</button>
                 <router-link v-if="!user" :to="{ name: 'signup' }" class="btn">Signup</router-link>
                 <router-link v-if="!user" :to="{ name: 'login' }" class="btn">Login</router-link>
