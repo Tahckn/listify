@@ -7,7 +7,7 @@
                 </RouterLink>
             </h1>
             <div class="space-x-3 mb-3">
-                <router-link class="btn" v-if="user" :to="{ name: 'createPlaylists' }">Create Playlist</router-link>
+                <router-link class="btn" v-if="user" :to="{ name: 'userPlaylists' }">My Playlists</router-link>
                 <button v-if="user" @click="handleLogout">Logout</button>
                 <router-link v-if="!user" :to="{ name: 'signup' }" class="btn">Signup</router-link>
                 <router-link v-if="!user" :to="{ name: 'login' }" class="btn">Login</router-link>

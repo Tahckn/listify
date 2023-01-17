@@ -18,11 +18,11 @@
         <div>
             <p v-if="!playlist.songs.length">No songs have been added to this playlist yet.</p>
             <div v-for="song in playlist.songs" :key="song.id">
-                <div class="drop-shadow-2xl mx-auto p-3 rounded-lg bg-white/20 backdrop-blur-xl flex justify-between 
+                <div class=" drop-shadow-2xl mx-auto py-2 px-3 rounded-lg bg-white/20 backdrop-blur-xl flex justify-between 
                      mb-3 items-center relative">
                     <div>
-                        <h3 class="font-normal">{{ song.title }}</h3>
-                        <p class="text-sm font-light">{{ song.artist }}</p>
+                        <h3 class="font-normal md:text-lg text-sm">{{ song.title }}</h3>
+                        <p class="text-sm md:font-light font-extralight">{{ song.artist }}</p>
                     </div>
 
                     <button @click="songDelete(song.id)" v-if="ownership"
