@@ -1,6 +1,16 @@
 # listify
 
-This template should help get you started developing with Vue 3 in Vite.
+Store your favorite playlists.
+
+[Website](https://listify-bf8d2.web.app/)
+
+## Screenshots
+
+![app image](https://github.com/Tahckn/listify/blob/main/public/chrome_xrCYpsZIXD.png)
+
+![app image](https://github.com/Tahckn/listify/blob/main/public/chrome_WPcwWXt9Sa.png)
+
+![app image](https://github.com/Tahckn/listify/blob/main/public/chrome_VVE7nz5BuC.png)
 
 ## Recommended IDE Setup
 
