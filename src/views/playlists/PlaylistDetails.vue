@@ -9,29 +9,46 @@
             <h2 class="uppercase text-text/90 text-lg md:text-2xl mt-5">{{ playlist.title }}</h2>
             <p class="mb-5 text-text/50 text-xs md:text-sm">Created by {{ playlist.userName }}</p>
             <p class="mb-5 text-text/80 text-sm md:text-base ">{{ playlist.description }}</p>
-            <button @click="handleDelete"
+            <button v-if="ownership" @click="handleDelete"
                 class="bg-transparent text-sm  ring-1 ring-opacity-60 ring-warning hover:bg-warning">Delete
                 Playlist</button>
         </div>
 
         <!--* song list -->
         <div>
-            <p>song list here</p>
+            <p v-if="!playlist.songs.length">No songs have been added to this playlist yet.</p>
+            <div v-for="song in playlist.songs" :key="song.id">
+                <div class="drop-shadow-2xl mx-auto p-3 rounded-lg bg-white/20 backdrop-blur-xl flex justify-between 
+                     mb-3 items-center relative">
+                    <div>
+                        <h3 class="font-normal">{{ song.title }}</h3>
+                        <p class="text-sm font-light">{{ song.artist }}</p>
+                    </div>
+
+                    <button @click="songDelete(song.id)" v-if="ownership"
+                        class="absolute hover:bg-warning rounded-md hover:fill-text hover:stroke-2 fill-items bg-transparent py-0.5 px-0.5 ring-0 top-0 right-2">
+                        <Trash />
+                    </button>
+                </div>
+            </div>
+            <AddSong v-if="ownership" :playlist="playlist" />
         </div>
     </div>
 </template>
 
 <script setup>
+import Trash from '../../assets/icons/trash.svg'
 import useDocument from '@/composables/useDocument';
 import getUser from '@/composables/getUser'
 import getDocument from '@/composables/getDocument';
 import useStorage from '@/composables/useStorage'
 import { useRouter } from 'vue-router';
 import { computed } from 'vue';
+import AddSong from '../../components/AddSong.vue';
 
 const router = useRouter()
 const { user } = getUser()
-const { deleteDoc, isLoading } = useDocument('playlists', props.id)
+const { deleteDoc, isLoading, updateDoc } = useDocument('playlists', props.id)
 
 const { deleteImage } = useStorage()
 
@@ -45,6 +62,11 @@ const handleDelete = async () => {
     setTimeout(() => {
         router.push({ name: 'home' })
     }, 400)
+}
+
+const songDelete = async (id) => {
+    const songs = playlist.value.songs.filter((song) => song.id != id)
+    await updateDoc({ songs })
 }
 
 

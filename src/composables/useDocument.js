@@ -22,7 +22,22 @@ const useDocument = (collection, id) => {
     }
   }
 
-  return { error, isLoading, deleteDoc }
+  const updateDoc = async (updates) => {
+    isLoading.value = true
+    error.value = null
+
+    try {
+      const res = await docRef.update(updates)
+      isLoading.value = false
+      return res
+    } catch (error) {
+      console.log(error.message)
+      error.value = 'could not update the document'
+      isLoading.value = false
+    }
+  }
+
+  return { error, isLoading, deleteDoc, updateDoc }
 }
 
 export default useDocument

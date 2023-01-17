@@ -1,9 +1,11 @@
 <template>
   <form @submit.prevent="handleSubmit">
     <h3>Sign Up</h3>
-    <input type="text" name="displayName" id="displayName" placeholder="Display Name" v-model="data.displayName" />
-    <input type="email" name="email" id="email" placeholder="Email" v-model="data.email" />
-    <input type="password" placeholder="Password" v-model="data.password" />
+    <input @keydown.enter="handleSubmit()" type="text" name="displayName" id="displayName" placeholder="Display Name"
+      v-model="data.displayName" />
+    <input @keydown.enter="handleSubmit()" type="email" name="email" id="email" placeholder="Email"
+      v-model="data.email" />
+    <input @keydown.enter="handleSubmit()" type="password" placeholder="Password" v-model="data.password" />
     <div v-if="error" class="error">{{ error }}</div>
     <button v-if="!isLoading">Sign Up</button>
     <button v-if="isLoading">Loading</button>

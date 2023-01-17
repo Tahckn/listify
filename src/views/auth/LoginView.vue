@@ -1,8 +1,9 @@
 <template>
   <form @submit.prevent="handleSubmit">
     <h3>Login</h3>
-    <input type="email" name="email" id="email" placeholder="Email" v-model="data.email" />
-    <input type="password" placeholder="Password" v-model="data.password" />
+    <input @keydown.enter="handleSubmit()" type="email" name="email" id="email" placeholder="Email"
+      v-model="data.email" />
+    <input @keydown.enter="handleSubmit()" type="password" placeholder="Password" v-model="data.password" />
     <div v-if="error" class="error">{{ error }}</div>
     <button v-if="!isLoading">Log in</button>
     <button v-if="isLoading">Loading</button>
